@@ -130,7 +130,7 @@ export class DvelopActions implements n8nWorkflow.INodeType {
 			},
 			{
 				displayName: 'Payload (JSON)',
-				name: 'volatilePayLoad',
+				name: 'volatilePayload',
 				type: 'json',
 				displayOptions: showVolatileActionMode,
 				default: '{}',
@@ -220,7 +220,7 @@ export class DvelopActions implements n8nWorkflow.INodeType {
 			},
 			{
 				displayName: 'Import Profile',
-				name: 'inbound_batchProfile',
+				name: 'inbound_batch_profile',
 				type: 'string',
 				required: true,
 				default: '',
@@ -297,7 +297,7 @@ export class DvelopActions implements n8nWorkflow.INodeType {
 
 			if (actionMode === ACTION_MODE_VOLATILE) {
 				// Volatile payload is already an object (type: 'json') -> no JSON.parse needed
-				const volatilePayload = this.getNodeParameter('volatilePayLoad', i) as Record<string, unknown>;
+				const volatilePayload = this.getNodeParameter('volatilePayload', i) as Record<string, unknown>;
 				Object.assign(payload, volatilePayload);
 
 				const response = await this.helpers.httpRequestWithAuthentication.call(this, 'dvelopApi', {
@@ -404,7 +404,7 @@ export class DvelopActions implements n8nWorkflow.INodeType {
 						payload.file_binary = base64;
 					}
 
-					payload.batch_profile = this.getNodeParameter('inbound_batchProfile', i);
+					payload.batch_profile = this.getNodeParameter('inbound_batch_profile', i);
 					break;
 				}
 

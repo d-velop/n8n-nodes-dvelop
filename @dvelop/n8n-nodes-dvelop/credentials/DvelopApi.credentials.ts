@@ -2,9 +2,11 @@ import type {
 	IAuthenticateGeneric,
 	ICredentialTestRequest,
 	ICredentialType,
-	INodeProperties,
 	Icon,
+	INodeProperties,
 } from 'n8n-workflow';
+
+const AUTH_METHOD_BEARER_TOKEN = 'bearerToken' as const;
 
 export class DvelopApi implements ICredentialType {
 	name = 'dvelopApi';
@@ -26,10 +28,8 @@ export class DvelopApi implements ICredentialType {
 			displayName: 'Authentication Method',
 			name: 'authMethod',
 			type: 'options',
-			options: [
-				{ name: 'Bearer Token', value: 'bearerToken' },
-			],
-			default: 'bearerToken',
+			options: [{ name: 'Bearer Token', value: AUTH_METHOD_BEARER_TOKEN }],
+			default: AUTH_METHOD_BEARER_TOKEN,
 			description: 'Method to use for authentication',
 		},
 		{
@@ -40,23 +40,22 @@ export class DvelopApi implements ICredentialType {
 			default: '',
 			description: 'Bearer token obtained from d.velop API-key section',
 			displayOptions: {
-				show: { authMethod: ['bearerToken'] },
+				show: { authMethod: [AUTH_METHOD_BEARER_TOKEN] },
 			},
 		},
 	];
-	
 
 	authenticate: IAuthenticateGeneric = {
-	type: 'generic',
-	properties: {
-		headers: {
-			Authorization: '=Bearer {{$credentials.bearerToken}}',
-			Accept: 'application/json',
+		type: 'generic',
+		properties: {
+			headers: {
+				Authorization: '=Bearer {{$credentials.bearerToken}}',
+				Accept: 'application/json',
+			},
 		},
-	},
-};
+ 	};
 
-test: ICredentialTestRequest = {
+	test: ICredentialTestRequest = {
 		request: {
 			baseURL: '={{$credentials.baseUrl}}',
 			url: '/actions/api/v1/actions',
@@ -65,6 +64,9 @@ test: ICredentialTestRequest = {
 		},
 	};
 }
+
+
+
 
 
 
