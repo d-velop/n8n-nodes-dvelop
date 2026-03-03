@@ -38,30 +38,19 @@ const showStableOperation = (operation: StableOp) => ({
 	},
 });
 
+const showStableOperations = (operations: StableOp[]) => ({
+	show: {
+		actionMode: [ACTION_MODE_STABLE],
+		operation: operations,
+	},
+});
+
 const showInboundSource = (source: 'binary' | 'string') => ({
 	show: {
 		actionMode: [ACTION_MODE_STABLE],
 		operation: [STABLE_OPERATION.CREATE_INBOUND_BATCH],
 		inbound_fileSource: [source],
 	},
-});
-
-const createRepositoryProperty = (name: string, operation: StableOp): n8nWorkflow.INodeProperties => ({
-	displayName: 'Repository',
-	name,
-	type: 'string',
-	required: true,
-	default: '',
-	displayOptions: showStableOperation(operation),
-});
-
-const createDocumentIdProperty = (name: string, operation: StableOp): n8nWorkflow.INodeProperties => ({
-	displayName: 'Document ID',
-	name,
-	type: 'string',
-	required: true,
-	default: '',
-	displayOptions: showStableOperation(operation),
 });
 
 export class DvelopActions implements n8nWorkflow.INodeType {
@@ -149,8 +138,28 @@ export class DvelopActions implements n8nWorkflow.INodeType {
 			},
 
 			// Stable Actions
-			createRepositoryProperty('getDocument_repoId', STABLE_OPERATION.GET_DOCUMENT),
-			createDocumentIdProperty('getDocument_documentId', STABLE_OPERATION.GET_DOCUMENT),
+			{
+				displayName: 'Repository',
+				name: 'repo_id',
+				type: 'string',
+				required: true,
+				default: '',
+				displayOptions: showStableOperations([
+					STABLE_OPERATION.GET_DOCUMENT,
+					STABLE_OPERATION.GET_DOCUMENT_INFO,
+				]),
+			},
+			{
+				displayName: 'Document ID',
+				name: 'document_id',
+				type: 'string',
+				required: true,
+				default: '',
+				displayOptions: showStableOperations([
+					STABLE_OPERATION.GET_DOCUMENT,
+					STABLE_OPERATION.GET_DOCUMENT_INFO,
+				]),
+			},
 			{
 				displayName: 'Format',
 				name: 'getDocument_documentType',
@@ -163,10 +172,6 @@ export class DvelopActions implements n8nWorkflow.INodeType {
 				],
 				displayOptions: showStableOperation(STABLE_OPERATION.GET_DOCUMENT),
 			},
-
-			// GET_DOCUMENT_INFO
-			createRepositoryProperty('getDocumentInfo_repoId', STABLE_OPERATION.GET_DOCUMENT_INFO),
-			createDocumentIdProperty('getDocumentInfo_documentId', STABLE_OPERATION.GET_DOCUMENT_INFO),
 
 			// GET_USER_INFO
 			{
@@ -310,8 +315,8 @@ export class DvelopActions implements n8nWorkflow.INodeType {
 
 			switch (operation) {
 				case STABLE_OPERATION.GET_DOCUMENT: {
-					payload.repo_id = this.getNodeParameter('getDocument_repoId', i);
-					payload.document_id = this.getNodeParameter('getDocument_documentId', i);
+					payload.repo_id = this.getNodeParameter('repo_id', i);
+					payload.document_id = this.getNodeParameter('document_id', i);
 					payload.document_type = this.getNodeParameter('getDocument_documentType', i);
 
 					const response = (await this.helpers.httpRequestWithAuthentication.call(this, 'dvelopApi', {
@@ -367,8 +372,8 @@ export class DvelopActions implements n8nWorkflow.INodeType {
 				}
 
 				case STABLE_OPERATION.GET_DOCUMENT_INFO: {
-					payload.repo_id = this.getNodeParameter('getDocumentInfo_repoId', i);
-					payload.document_id = this.getNodeParameter('getDocumentInfo_documentId', i);
+					payload.repo_id = this.getNodeParameter('repo_id', i);
+					payload.document_id = this.getNodeParameter('document_id', i);
 					break;
 				}
 
