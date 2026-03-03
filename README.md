@@ -2,6 +2,7 @@
 
 # Table of Contents
 
+- [Quickstart](#quickstart)
 - [Overview](#overview)
 - [1. Purpose of this Node](#1-purpose-of-this-node)
   - [1.1 Typical Use-Cases](#11-typical-use-cases)
@@ -36,13 +37,26 @@
   - [7.3 Import Errors](#73-import-errors)
   - [7.4 Volatile Action Errors](#74-volatile-action-errors)
 
+---
+
+## Quickstart (quick and dirty)
+
+- copy source code
+- open ide
+- npm install n8n -g
+- npm install --global @n8n/node-cli
+- open terminal and navigate to @dvelop\n8n-nodes-dvelop
+- npm run build
+- npm run lint
+- npm run dev
+
+Detailled information can be found here: https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/
 
 ---
 
 ## Overview 🚀
 
 This project provides a gateway for hyperautomation by enabling seamless integration between the d.velop platform and external applications using n8n. The d.velop Actions Node allows users to execute d.velop Actions directly within n8n workflows, making it possible to automate document management, user operations, and custom process integrations. This enables powerful, flexible, and scalable automation across the entire d.velop ecosystem.
-
 
 ---
 
@@ -58,7 +72,6 @@ This project provides a gateway for hyperautomation by enabling seamless integra
 - Import documents automatically to the DMS
 - Call the metadata from documents
 - Call user information
-
 
 ---
 
@@ -103,7 +116,7 @@ For every Action Node you want to execute, you need to have your credentials set
 
 ## 4. Use the Node in a Workflow
 
-To use this node in a workflow you need to open the **Nodes Panel** and search for *d.velop Actions*
+To use this node in a workflow you need to open the **Nodes Panel** and search for _d.velop Actions_
 
 ---
 
@@ -154,7 +167,7 @@ This is going to showcase how the stable Actions work in detail.
 
 <img width="461" height="486" alt="image" src="https://github.com/user-attachments/assets/befacd4b-82ea-49f7-a901-d0096416a674" />
 
-- To find out what the *Repository* string and the *Document_ID* are, you need to open the document and copy the marked section.
+- To find out what the _Repository_ string and the _Document_ID_ are, you need to open the document and copy the marked section.
 
 <img width="1226" height="708" alt="Download_Document" src="https://github.com/user-attachments/assets/ea17fb6d-8fae-4bc9-937d-825eb2a40349" />
 
@@ -166,17 +179,19 @@ This is going to showcase how the stable Actions work in detail.
 
 <img width="2346" height="766" alt="image" src="https://github.com/user-attachments/assets/c2d338be-17e8-4770-8382-1ba075ea4538" />
 
-***Webhook***
+**_Webhook_**
 
 A webhook listens for responses from the Discord bot that has been set up. If the user requests a document, he can fulfill three parameters, two of which are mandatory.
+
 - Document ID:
 - Repository
 - Email (optional).
 
-***AI-Agent***
+**_AI-Agent_**
 
 - The Agent connected to the Ollama Chat Model is trained to convert these inputs into a string and filter out the important information.
 - The agent received the following prompt:
+
 ```bash
 You are a strict extraction engine.
 
@@ -184,7 +199,7 @@ Your only task is to extract two or three values from the user message:
 
 - repositoryId
 - documentId
-- Email 
+- Email
 Rules:
 
 - Output ONLY valid JSON.
@@ -205,8 +220,9 @@ Output format:
 }
 ```
 
-***Code in Java Script***
+**_Code in Java Script_**
 This is a compact code node for custom JavaScript. The node's content is as follows:
+
 ```bash
 const parsed = JSON.parse($json.output);
 
@@ -215,17 +231,18 @@ return [
     json: parsed
   }
 ];
-  ```
+```
+
 This small code block is responsible for parsing the string into individual objects. Therefore, they can be used subsequently.
 
+**_d.velop Actions - Download Document_**
 
-***d.velop Actions - Download Document***
-- This action facilitates the download of the document using the *repository* and *document ID*.
+- This action facilitates the download of the document using the _repository_ and _document ID_.
 - Please note that neither of these is set manually, they are both set using a simple JavaScript expression.
 
 <img width="507" height="239" alt="image" src="https://github.com/user-attachments/assets/494a7f5e-4ef2-43d5-ab9f-9527a5c95cea" />
 
-***IF-Statment***
+**_IF-Statment_**
 
 - The IF statement is used to determine whether an email is given.
 
@@ -239,9 +256,10 @@ This small code block is responsible for parsing the string into individual obje
 
 - If the email is successful, the user will receive a Discord verification message confirming the request.
 
-***Send a Message - Email = False***
+**_Send a Message - Email = False_**
 
 - This simply delegates the email aspect, ensuring that the message is transmitted directly to the intended Discord user.
+
 ---
 
 **5.2. Get Document Info**
@@ -285,14 +303,11 @@ This action shows all the Information the Document has attached to it, for examp
 
 <img width="577" height="501" alt="image" src="https://github.com/user-attachments/assets/54410412-5425-4aeb-addf-82db00a9c6ce" />
 
-- To find out what the *Repository* string is, you need to open the Document you want to get the Information from, via. the n8n node and copy the red Marked Link section.
+- To find out what the _Repository_ string is, you need to open the Document you want to get the Information from, via. the n8n node and copy the red Marked Link section.
 
-
-- To identify the *Document ID* you can, open te Details and Look for Document_Nr. This is also circled with a rectangle
-
+- To identify the _Document ID_ you can, open te Details and Look for Document_Nr. This is also circled with a rectangle
 
 <img width="1226" height="708" alt="Download_Document" src="https://github.com/user-attachments/assets/ea17fb6d-8fae-4bc9-937d-825eb2a40349" />
-
 
 - The output will be Display in the Rightside of the Node:
 
@@ -304,17 +319,20 @@ This action shows all the Information the Document has attached to it, for examp
 
 <img width="3247" height="979" alt="image" src="https://github.com/user-attachments/assets/3a46e88f-11be-48e9-91a9-d9028e5e28b4" />
 
-***Webhook***
+**_Webhook_**
 
 A webhook listens for responses from the Discord bot that has been set up. If the user requests a document, he can fulfill three parameters, two of which are mandatory.
+
 - Document ID:
 - Repository
 - Specific_Metatada
 - Email (optional).
 
-***AI-Agent***
+**_AI-Agent_**
+
 - The Agent connected to the Ollama Chat Model is trained to convert these inputs into JSON and filter out the important information.
 - The agent received the following prompt:
+
 ```bash
 You are a strict extraction engine.
 
@@ -380,9 +398,10 @@ OUTPUT FORMAT (STRICT SCHEMA):
 }
 ```
 
-***Code in Java Script***
+**_Code in Java Script_**
 
 This is a compact code node for custom JavaScript. The node's content is as follows:
+
 ```bash
 const parsed = JSON.parse($json.output);
 
@@ -391,22 +410,23 @@ return [
     json: parsed
   }
 ];
-  ```
+```
+
 This small code block is responsible for parsing the string into individual objects. Therefore, they can be used subsequently.
 
-***d.velop Actions - Get Document Information***
-- This action facilitates the download of the document using the *repository* and *document ID*.
+**_d.velop Actions - Get Document Information_**
+
+- This action facilitates the download of the document using the _repository_ and _document ID_.
 - Please note that neither of these is set manually, they are both set using a simple JavaScript expression.
 
 <img width="1540" height="217" alt="image" src="https://github.com/user-attachments/assets/d0e253e9-da49-42b3-8099-3ff7f7e6434b" />
 
+**_AI-Agent1_**
 
-***AI-Agent1***
-
-- This Agent is responsible for Filtering out the Information that the *Get Document Information* is providing.
+- This Agent is responsible for Filtering out the Information that the _Get Document Information_ is providing.
 - The Promt the the AI got is filled with all the Metadata that the Action Produces, so the AI has access to it
-- If the ```{{ $('Code in JavaScript').item.json.Metadata_Specific[0] }}``` is set to *null* the whole Metadata conerning the document will be shown
-The Prompt:
+- If the `{{ $('Code in JavaScript').item.json.Metadata_Specific[0] }}` is set to _null_ the whole Metadata conerning the document will be shown
+  The Prompt:
 
 ```bash
 You are a metadata summarization engine.
@@ -450,7 +470,7 @@ Print out Everything
 
 If Metadata_Specific is set: {{ $('Code in JavaScript').item.json.Metadata_Specific[0] }}
 
-Only summarize the requested metadata fields. 
+Only summarize the requested metadata fields.
 
 Ignore all other metadata.
 
@@ -469,7 +489,7 @@ Do NOT explain anything.
 Output only the summary.
 ```
 
-***IF-Statment***
+**_IF-Statment_**
 
 - The IF statement is used to determine whether an email is given.
 
@@ -485,15 +505,9 @@ Output only the summary.
 
 <img width="1472" height="199" alt="image" src="https://github.com/user-attachments/assets/e884ae8e-6656-447b-b8d5-fd912bac9f9b" />
 
-
-
-***Send a Message - Email = False***
+**_Send a Message - Email = False_**
 
 - This simply delegates the email aspect, ensuring that the message is transmitted directly to the intended Discord user.
-
-
-
-
 
 **5.3. Get User Info**
 
@@ -516,8 +530,8 @@ This action displays all the information associated with the user. Please find b
 - getGroupIds – Returns the IDs of the user's groups
 - getGroupDisplayNames – Returns the names of the user's groups
 
-
 **5.3.1 Setting up the Action**
+
 - To set this Action up you just need the User_ID.
 
 <img width="580" height="421" alt="image" src="https://github.com/user-attachments/assets/21f70d38-d286-4653-b31a-b240af5f15fc" />
@@ -527,32 +541,31 @@ This action displays all the information associated with the user. Please find b
 
 <img width="1047" height="781" alt="Screenshot 2026-02-19 110016" src="https://github.com/user-attachments/assets/ddb2a6bb-e8cd-48ec-ac35-dce8445d0b8a" />
 
-
 The output will be Displayed on the Output Tab:
-
 
 <img width="1365" height="1142" alt="image" src="https://github.com/user-attachments/assets/6311374e-0825-42fd-bb55-cb9887a3128f" />
 
 **5.3.2 Workflow**
 
-- This Workflow is a bit bigger and also Includes 2 Other Actions and a d.velop custom API Call. The *Get User Info* Action cant be utilized to demonstrate a good Usecase alone.
-Senariao:
+- This Workflow is a bit bigger and also Includes 2 Other Actions and a d.velop custom API Call. The _Get User Info_ Action cant be utilized to demonstrate a good Usecase alone.
+  Senariao:
 
 If a User of the DMS Wants to download a specific Document, the Owner of that Document gets a E-Mail. To Approve or denie the Download request.
 
-  
 <img width="2956" height="557" alt="image" src="https://github.com/user-attachments/assets/befc8b7b-da82-4a9d-935e-d3e1d165fd4a" />
 
-***Webhook***
+**_Webhook_**
 
 A webhook listens for responses from the Discord bot that has been set up. If the user requests a document, he can fulfill 2 parameters, both of them are mandatory:
+
 - Document ID
 - Repository
 
-***AI-Agent***
+**_AI-Agent_**
 
 - The Agent connected to the Ollama Chat Model is trained to convert these inputs into a string and filter out the important information.
 - The agent received the following prompt:
+
 ```bash
 You are a strict extraction engine.
 
@@ -579,8 +592,9 @@ Output format:
 }
 ```
 
-***Code in Java Script***
+**_Code in Java Script_**
 This is a compact code node for custom JavaScript. The node's content is as follows:
+
 ```bash
 const parsed = JSON.parse($json.output);
 
@@ -589,20 +603,22 @@ return [
     json: parsed
   }
 ];
-  ```
+```
+
 This small code block is responsible for parsing the string into individual objects. Therefore, they can be used subsequently.
 
+**_d.velop Actions - Get Document Info_**
 
-***d.velop Actions - Get Document Info***
 - Here the repository and the Document ID's are enterd with a Statment
-- This node is Important because here you can get the DisplayValue from the Document Owner. This will be Utalised in the netxt node 
+- This node is Important because here you can get the DisplayValue from the Document Owner. This will be Utalised in the netxt node
 
 <img width="764" height="512" alt="image" src="https://github.com/user-attachments/assets/71184366-cf57-419a-baf5-fbf6512bedfd" />
 
-***HTTP-Request***
+**_HTTP-Request_**
+
 - THis node is Basicly just a Custom api Call to the identityprivider API
 - The Variable is the Name of the Document Owner
-  
+
   ```bash
   https://connect-for-n8n-test.d-velop.cloud/identityprovider/scim/users?filter=DisplayName eq "{{ $json.response.sourceProperties[2].displayValue }}"
   ```
@@ -611,22 +627,22 @@ This small code block is responsible for parsing the string into individual obje
 
 - If you run this call, you can get the ID, of the Document Owner
 
-***d.velop Actions - Get User Info***
+**_d.velop Actions - Get User Info_**
 
 - In this Node the User_ID is being user to get the E-Mail from the Document Owner
 
 <img width="506" height="437" alt="image" src="https://github.com/user-attachments/assets/0aa9cc64-2108-4bc3-a314-88c36e42a3e2" />
 
-***G-Mail Send a Message***
+**_G-Mail Send a Message_**
 
-- With the E-Mail we got from the *Get User Info* Action, we now can send a Approve request to the Document Owner
+- With the E-Mail we got from the _Get User Info_ Action, we now can send a Approve request to the Document Owner
 - Tis E-Mail also Displays who is Requesting this Document
 
 <img width="495" height="698" alt="image" src="https://github.com/user-attachments/assets/7d2a6769-4a80-4b18-8544-f64527e4dc48" />
 
+**_IF True - Approved_**
 
-***IF True - Approved***
-- If the Document Owner Approved the download the Workflow procceds to Download the Document using the *Download Document* Action.
+- If the Document Owner Approved the download the Workflow procceds to Download the Document using the _Download Document_ Action.
 
 <img width="500" height="560" alt="image" src="https://github.com/user-attachments/assets/33d896c6-4f6e-47eb-86f6-133d3e5c3d05" />
 
@@ -634,11 +650,11 @@ This small code block is responsible for parsing the string into individual obje
 
 <img width="492" height="1034" alt="image" src="https://github.com/user-attachments/assets/5f09b25d-80b0-418f-9fd7-6f7b6e761129" />
 
-***IF False - Denied***
+**_IF False - Denied_**
+
 - If the Download Request was denied by the Owner, the bot sends a message that you request was denied.
 
 <img width="496" height="691" alt="image" src="https://github.com/user-attachments/assets/d8e9a75d-aae9-41fd-89a5-5297dc30d144" />
-
 
 ---
 
@@ -654,19 +670,23 @@ The Action does not return Any Values, it just Uploads Files, so they can be Ind
 <img width="1423" height="536" alt="image" src="https://github.com/user-attachments/assets/1d0ccf5e-7a87-4e46-aa5f-de8c63943809" />
 
 - In order to Upload a file with the d.velop Action, you need a File in your Workflow.
-- As an small example the *"Read/Write Files from Disk"* Node is Used to get a file in to the Workflow. 
+- As an small example the _"Read/Write Files from Disk"_ Node is Used to get a file in to the Workflow.
 
 **5.4.2 Setting up the Node**
+
 - This node in Paticular has an Input from The node before
 
 <img width="1162" height="753" alt="image" src="https://github.com/user-attachments/assets/3adb6883-d02f-4c18-9089-064a53aaa0ef" />
 
 **File Name**
+
 - The File name can either be set manually every Time, or you write a simple Java Script Expression:
+
   ```bash
   {{ $json.fileName }}
   ```
-**File Source**
+
+  **File Source**
 
 - When configuring the node, set the File Source to From N8n Binary. This means the file will be taken from the binary data of a previous node in your workflow.
 - Alternatively, you can use From Base64/String as the File Source. This option allows you to upload a file using its Base64-encoded content instead of binary data.
@@ -677,13 +697,14 @@ The Action does not return Any Values, it just Uploads Files, so they can be Ind
 
 **Import Profile**
 
-- In order to get the Import Profile you need to navigate to *configuration* -> *Document Managment* -> *Import* -> *Importoption* -> *Importprofile*
+- In order to get the Import Profile you need to navigate to _configuration_ -> _Document Managment_ -> _Import_ -> _Importoption_ -> _Importprofile_
 
 <img width="1076" height="599" alt="image" src="https://github.com/user-attachments/assets/8bac4b1c-b63d-418c-b9a4-66be1800e3e8" />
 
-- In this setting you can Copy the red Marked *Import Profile*
+- In this setting you can Copy the red Marked _Import Profile_
 
 **5.4.3 DMS Inbound**
+
 - STILL UNDER CONSTRUCTION
 - API IS BITCHING
 
@@ -698,13 +719,14 @@ The Action does not return Any Values, it just Uploads Files, so they can be Ind
 - If you chose your action you need to fill the Payload
 
 **6.2. Payload of an Action**
-- To ascertain the payload of an action, it is necessary to utilize an *API client*, such as *Bruno*. -> https://www.usebruno.com
-- To retrieve all volatile actions, run this API call with the *base URL* and the *API key (token)*.
-<img width="556" height="240" alt="image" src="https://github.com/user-attachments/assets/cb0dbcce-4425-4fcc-906d-b3a643f2d430" />
+
+- To ascertain the payload of an action, it is necessary to utilize an _API client_, such as _Bruno_. -> https://www.usebruno.com
+- To retrieve all volatile actions, run this API call with the _base URL_ and the _API key (token)_.
+  <img width="556" height="240" alt="image" src="https://github.com/user-attachments/assets/cb0dbcce-4425-4fcc-906d-b3a643f2d430" />
 
 - If you execute this API call, you will receive a list of all the volatile actions.
 - In terms of testing, we will examine the Salesforce_getRecord action.
- 
+
 ```bash
 {
     "id": "salesforce_get-record",
@@ -765,7 +787,8 @@ The Action does not return Any Values, it just Uploads Files, so they can be Ind
     ],
     "volatile": true
 ```
-- The payload consists of the *input_properties*. So in this instance the payload is:
+
+- The payload consists of the _input_properties_. So in this instance the payload is:
 
 ```bash
 {
@@ -774,12 +797,12 @@ The Action does not return Any Values, it just Uploads Files, so they can be Ind
   "orgUrl": "https://your-org.salesforce.com"
 }
 ```
+
 **6.3 Assamble the Node**
 
 - The last step is to Paste the Payload in the Node of your desire, fill the properties wirh values and Execute the Node!
 
 <img width="939" height="577" alt="image" src="https://github.com/user-attachments/assets/3811a0fe-15e3-4093-93a5-c5f5d2ffd0cb" />
-
 
 ## 7. Error codes
 
@@ -801,7 +824,6 @@ Example response:
 }
 ```
 
-
 **7.2 Document Errors**
 
 | Error Code | Message              | Cause                   | Solution                 |
@@ -817,7 +839,6 @@ Example response:
 | 400        | Invalid import profile | Wrong import profile  | Verify import profile        |
 | 400        | Missing binary data    | Binary property empty | Verify input binary property |
 | 413        | Payload too large      | File too large        | Reduce file size             |
-
 
 **7.4 Volatile Action Errors**
 
