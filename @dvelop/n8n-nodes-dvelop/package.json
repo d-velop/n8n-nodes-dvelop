@@ -1,0 +1,48 @@
+{
+    "name": "@dvelop/n8n-nodes-dvelop",
+    "version": "0.1.0",
+    "description": "This package contains n8n nodes to work with the d.velop platform.",
+    "license": "MIT",
+    "homepage": "https://d-velop.de",
+    "keywords": [
+        "n8n-community-node-package"
+    ],
+    "author": {
+        "name": "phem",
+        "email": "philipp.hemmann@d-velop.de"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://git.d-velop.de/dvelopdocuments/poc/n8n-connector"
+    },
+   "scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+    "files": [
+        "dist"
+    ],
+    "n8n": {
+        "n8nNodesApiVersion": 1,
+        "strict": true,
+        "credentials": [],
+        "nodes": [
+            "dist/nodes/Example/Example.node.js"
+        ]
+    },
+    "devDependencies": {
+        "@n8n/node-cli": "*",
+        "eslint": "9.32.0",
+        "prettier": "3.6.2",
+        "release-it": "^19.0.4",
+        "typescript": "5.9.2"
+    },
+    "peerDependencies": {
+        "n8n-workflow": "*"
+    }
+}
