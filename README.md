@@ -41,11 +41,11 @@
 
 ## Quickstart (quick and dirty)
 
+- open terminal and navigate to n8n-nodes-dvelop
 - copy source code
 - open ide
 - npm install n8n -g
 - npm install --global @n8n/node-cli
-- open terminal and navigate to n8n-nodes-dvelop
 - npm run build
 - npm run lint
 - npm run dev
