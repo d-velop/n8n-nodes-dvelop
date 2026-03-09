@@ -41,8 +41,8 @@
 
 ## Quickstart (quick and dirty)
 
-- open terminal and navigate to n8n-nodes-dvelop
 - copy source code
+- open terminal and navigate to n8n-nodes-dvelop
 - open ide
 - npm install n8n -g
 - npm install --global @n8n/node-cli
