@@ -52,6 +52,17 @@
 
 Detailled information can be found here: https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/
 
+If you encounter problems during the steps, we recognized that the following steps can be helpful:
+
+- navigate in the terminal back to the root (n8n-connector)
+- run n8n-node new
+- enter a test name like '@test/n8n-nodes-test
+- choose a programmatic style node
+- choose Basic as type of programmatic node
+- a test node will be created together with the missing dependencies
+- after that you can return to the "real" node and start with npm run build and the following steps
+- if everything is fine, you can delete the test node
+
 ---
 
 ## Overview 🚀
