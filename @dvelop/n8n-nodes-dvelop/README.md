@@ -10,6 +10,7 @@ This project provides a gateway for hyperautomation by enabling seamless integra
 [Installation](#installation)
 [Operations](#operations)
 [Credentials](#credentials)
+[Documentation](#documentation)
 [Compatibility](#compatibility)
 [Resources](#resources)
 
