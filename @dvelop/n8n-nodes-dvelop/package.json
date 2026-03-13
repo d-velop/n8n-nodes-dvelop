@@ -8,8 +8,8 @@
         "n8n-community-node-package", "n8n-community-node-dvelop-package"
     ],
     "author": {
-        "name": "phem",
-        "email": "philipp.hemmann@d-velop.de"
+        "name": "d.velop AG",
+        "email": "n8n@d-velop.de"
     },
     "repository": {
         "type": "git",
