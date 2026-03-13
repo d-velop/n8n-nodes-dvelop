@@ -5,7 +5,7 @@
     "license": "MIT",
     "homepage": "https://d-velop.de",
     "keywords": [
-        "n8n-community-node-package"
+        "n8n-community-node-package", "n8n-community-node-dvelop-package"
     ],
     "author": {
         "name": "phem",
