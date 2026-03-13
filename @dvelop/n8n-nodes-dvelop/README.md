@@ -26,7 +26,24 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 ## Credentials
 
-_If users need to authenticate with the app/service, provide details here. You should include prerequisites (such as signing up with the service), available authentication methods, and how to set them up._
+For every Action Node you want to execute, you need to have your credentials set up. Without them, the API would not have the required information to execute calls.
+
+<img width="1312" height="746" alt="image" src="https://github.com/user-attachments/assets/fe0a35f7-6bc2-4837-a995-02426ab822e5" />
+
+**3.1 Base URL**
+
+- This is just the Base URL of your instance, marked in blue (don't copy the last /)
+
+<img width="600" height="41" alt="image" src="https://github.com/user-attachments/assets/2e89a2b6-0387-4ab9-8891-3c4090b817f0" />
+
+**3.2 Authentication Method**
+
+- The Bearer Token is nothing else except the API key you can find in the d.velop instance configuration, under Login -> API key
+- There you have to create an API key. Keep in mind that the key only shows once, therefore you should save the key somewhere safe. Also keep this key for yourself and do **NOT** hand it out.
+
+**3.3 Allowed HTTP Request**
+
+- For the node to work you need to allow the HTTP requests.
 
 ## Compatibility
 
