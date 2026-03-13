@@ -1,6 +1,7 @@
 # @dvelop/n8n-nodes-dvelop
 
 This is an n8n community node. It lets you use _app/service name_ in your n8n workflows.
+This is a community node and not affiliated with n8n GmbH. Use at your own risk.
 
 _App/service name_ is _one or two sentences describing the service this node integrates with_.
 
