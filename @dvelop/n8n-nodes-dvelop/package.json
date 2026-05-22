@@ -1,6 +1,6 @@
 {
     "name": "n8n-nodes-dvelop",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "This package contains n8n nodes to work with the d.velop platform.",
     "keywords": [
         "n8n-community-node-package",
