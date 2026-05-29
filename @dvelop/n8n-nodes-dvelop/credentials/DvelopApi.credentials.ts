@@ -53,7 +53,7 @@ export class DvelopApi implements ICredentialType {
 				Accept: 'application/json',
 			},
 		},
- 	};
+	};
 
 	test: ICredentialTestRequest = {
 		request: {
