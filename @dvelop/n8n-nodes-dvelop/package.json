@@ -9,7 +9,7 @@
     "homepage": "https://d-velop.de",
     "repository": {
         "type": "git",
-        "url": "https://git.d-velop.de/dvelopdocuments/poc/n8n-connector"
+        "url": "https://github.com/d-velop/n8n-nodes-dvelop"
     },
     "license": "MIT",
     "author": {
