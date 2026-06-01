@@ -1,6 +1,6 @@
 {
     "name": "n8n-nodes-dvelop",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "This package contains n8n nodes to work with the d.velop platform.",
     "keywords": [
         "n8n-community-node-package",
@@ -29,7 +29,7 @@
         "lint:fix": "n8n-node lint --fix",
         "release": "n8n-node release",
         "prepublishOnly": "n8n-node prerelease"
-    }, 
+    },
     "devDependencies": {
         "@n8n/node-cli": "*",
         "eslint": "9.29.0",
