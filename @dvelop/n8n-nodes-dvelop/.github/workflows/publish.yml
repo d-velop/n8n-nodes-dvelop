@@ -93,7 +93,7 @@ jobs:
         # Option A (OIDC): leave NPM_TOKEN unset — the token step is skipped and
         #   npm uses the OIDC exchange instead.
         # Option B (token): set NPM_TOKEN in repo secrets — it is written to
-        #   .npmrc here before publishing.
+        #   .npmrc here before publishing. 
         run: |
           [ -n "$NPM_TOKEN" ] && npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
           npm run release
