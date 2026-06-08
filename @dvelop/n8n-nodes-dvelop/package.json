@@ -17,7 +17,6 @@
         "email": "n8n@d-velop.de"
     },
     "type": "commonjs",
-    "main": ".prettierrc.js",
     "files": [
         "dist"
     ],
